@@ -1,0 +1,105 @@
+.non-strict {
+  float:right;
+  font-size: 1.55rem;
+  height: 2rem;
+  margin-top: -2px;
+}
+.non-strict.disabled {
+  display: none;
+}
+#replay::before {
+  content: 'ℹ';
+}
+
+.controls {
+  float:left;
+  display: flex;
+  align-items: center;
+  font-size: 1.55rem;
+  height: 2rem;
+  margin-top: 2px;
+}
+
+.controls > div.highlight, #replay.highlight {
+  background-color: goldenrod;
+  transition: background-color 1000ms linear;
+}
+
+#restart::before {
+  content: "↺";
+}
+#strict::before {
+  content: "≡";
+}
+#start::before {
+  content: "▶";
+}
+.button {
+  background-color: lightgrey;
+  padding: 0.3rem 1rem;
+}
+.button:hover {
+  background-color:#ddd;
+}
+
+.toggled, .toggled:hover {
+  background-color: goldenrod;
+}
+#start.toggled {
+  cursor: not-allowed;
+  color: gold;
+}
+#strict.disabled {
+  cursor: not-allowed;  
+}
+
+.game-buttons {
+    width: 66vmin;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.game-buttons > div {
+  width: 33vmin;
+  height: 33vmin;
+}
+#red { background-color: red; }
+#green { background-color: green; }
+#blue { background-color: blue; }
+#amarillo { background-color: yellow; }
+
+.game-buttons > div, .button {
+  cursor:pointer;
+  user-select:none;
+}
+.game-buttons > div.disabled {
+    cursor:default;
+}
+
+@mixin highlight($brightness) {
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, $brightness);
+}
+$colors: (
+  red: 0.2,
+  blue: 0.2,
+  green: 0.3,
+  amarillo: 0.5
+);
+@each $color, $value in $colors {
+  ##{$color}.highlight {
+    @include highlight($value);
+  }
+}
+
+#highlight-controls {
+  float: left;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200,200,200,0.5);
+  display:none;
+}

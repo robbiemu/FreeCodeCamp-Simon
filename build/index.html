@@ -33,18 +33,43 @@
 <link type='text/css' href='external/normalize.css/normalize.css' rel='stylesheet'>
 <link type='text/css' href='external/font-awesome-4.7.0/css/font-awesome.min.css' rel='stylesheet'>
 
-<script type='text/javascript' src='scripts/main.min.js'></script>
+<script type='text/javascript' src='scripts/bundle.min.js'></script>
+<link type='text/css' href='styles/bundle.min.css' rel='stylesheet'>
 
 </head>
 <body>
 
-<footer>
+  <div id="app">
+  <header>
+    <div class="controls">
+      <div class="button" id="strict" title="strict"></div>
+      <div class="button" id="restart" title="restart"></div>
+      <div class="button" id="start" title="start"></div>
+    </div>
+    
+    <div class="non-strict">
+            <div class="button" id="replay" title="replay"></div>
+    </div>
+    <h1>Simon</h1>
+  </header>
+  <section id="content">
+    <div class="game-buttons">
+      <div id="red"></div>
+      <div id="green"></div>
+      <div id="blue"></div>
+      <div id="amarillo"></div>
+    </div>
+  </section>
+  <footer>
     <div>
       © 2016
       <a href="//github.com/robbiemu">
         <i class="fa fa-github" aria-hidden="true"></i>&nbsp;//github.com/robbiemu</a>
     </div>
   </footer>
+  <div id="highlight-controls">
+  </div>
+</div>
 
 </body>
 </html>

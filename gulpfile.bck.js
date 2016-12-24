@@ -40,14 +40,13 @@ gulp.task('bs-reload', function () {
 });
 
 gulp.task('styles', function(){
-  return gulp.src(['source/styles/**/*.scss', 'source/styles/**/*.css'])
+  gulp.src('source/styles/**/*.scss')
     .pipe(plumber({
       errorHandler: function (error) {
         console.log(error.message);
         this.emit('end');
     }}))
     .pipe(sourcemaps.init())
-    .pipe(concat('bundle.css'))   
     .pipe(sass())
     .pipe(autoprefixer('last 2 versions'))
     .pipe(gulp.dest('build/styles/'))
@@ -75,7 +74,7 @@ gulp.task('scripts', function(){
 });
 
 gulp.task('external-scss', function(){
-  return gulp.src(['external/font-awesome-4.7.0/scss/*.scss'])
+  gulp.src(['external/font-awesome-4.7.0/scss/*.scss'])
     .pipe(plumber({
       errorHandler: function (error) {
         console.log(error.message);
@@ -92,15 +91,29 @@ gulp.task('external-scss', function(){
     .pipe(browserSync.reload({stream:true}))
 });
 
+const STATIC_STYLES = ['source/styles/**/*.css']
 const STATIC_HYPERTEXT = ['source/**/*!template.html', 'source/**/*.html']
 const STATIC_TEMPLATES = ['source/templates/*.template.html']
 
 gulp.task('static-sources', function(){
+/*  gulp.src(STATIC_STYLES)
+    .pipe(gulp.dest('build/styles/'))
+    .pipe(sourcemaps.init())
+      .pipe(concat('bundle.css'))
+//      .pipe(gulp.dest('build/styles/'))
+      .pipe(autoprefixer('last 2 versions'))
+//      .pipe(gulp.dest('build/styles/'))
+//      .pipe(rename({suffix: '.min'}))
+//      .pipe(config.production ? minifyCSS() : util.noop())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('build/styles/'))
+    .pipe(browserSync.reload({stream:true}))
+*/
   return gulp.src(STATIC_HYPERTEXT)
     .pipe(gulp.dest('build/'))
 });
 
-gulp.task('default', ['browser-sync', 'styles', 'scripts', 'external-scss', 'static-sources'], function(){
+gulp.task('default', ['browser-sync', 'styles', 'scripts', 'external-scss' /*, 'static-sources' */], function(){
   gulp.src(['external/font-awesome-4.7.0/fonts/fontawesome-webfont.*']).pipe(gulp.dest('build/external/font-awesome-4.7.0/fonts'));
   gulp.src( 'external/font-awesome-4.7.0/scss/*.scss', ['external-scss']);
 
@@ -112,12 +125,13 @@ gulp.task('default', ['browser-sync', 'styles', 'scripts', 'external-scss', 'sta
 
   gulp.src(['node_modules/normalize.css/*.css']).pipe(gulp.dest('build/external/normalize.css'));
 
-  gulp.watch(['source/styles/**/*.scss','source/styles/**/*.css'], ['styles']);
+  gulp.watch('source/styles/**/*.scss', ['styles']);
   gulp.watch('source/scripts/**/*.js', ['scripts']);
 
   let static_sources = []
   static_sources.push(...STATIC_HYPERTEXT)
-  gulp.watch(static_sources, ['static-sources']);
+//  static_sources.push(...STATIC_STYLES)
+ // gulp.watch(static_sources, ['static-sources']);
 
   gulp.watch('*.html', ['bs-reload']);
 });

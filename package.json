@@ -16,20 +16,23 @@
     "url": "https://github.com/robbiemu/FreeCodeCamp-Simon/issues"
   },
   "homepage": "https://github.com/robbiemu/FreeCodeCamp-Simon#readme",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-es2016": "^6.16.0",
+    "browser-sync": "^2.18.5",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-fn": "0.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.7"
-  },
-  "dependencies": {
-    "browser-sync": "^2.18.5",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-fn": "0.0.0",
+    "gulp-util": "^3.0.7",
     "jquery": "^3.1.1",
     "lodash": "^4.17.2",
     "normalize.css": "^5.0.0"

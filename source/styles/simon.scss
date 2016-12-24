@@ -1,6 +1,60 @@
-.scss {
-    color: red;
-    .inner{
-        color: green;
-    }
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:200,400,700,900');
+
+:root {
+  font-family: "Nunito Sans", sans;
+  font-size: 16pt;
+}
+
+body {
+  display:flex;
+  align-items: center;  
+  justify-content: center;
+}
+
+#app {
+  min-height: 100vh;
+  display:inline-flex;
+  flex: 1;
+  align-items: center;  
+  flex-direction: column;
+  background-color: #bbb;
+}
+
+header {
+  width: 100%;
+  background-color: grey;
+  margin-bottom: 1rem;
+}
+header > h1 {
+  margin: 0;
+  width: 100%;
+  font-weight: 100;
+  text-align: center;
+  color: white;
+}
+
+footer {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: grey;
+  font-size: 0.75rem;
+  div {
+    padding: 1rem;
+    a {
+      margin-left: 5rem;
+      font-size: 1rem;
+      font-weight: 100;
+      color: white;
+      text-decoration: none;
+      float: right;
+    }    
+  }
+}
+
+section#content {
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+  flex: 1;
+  padding: 0 5vmin;
 }
